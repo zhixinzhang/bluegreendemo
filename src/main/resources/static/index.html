@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h2>Let's start the Blizzard new Blue and Green Deployment Demo </h2>
+    
+    <p><a href="/bluegreenapi">check current date/time</a></p>
+    <button type="button"
+        onclick="document.getElementById('demo').innerHTML = Date()">
+        Click me to display Date and Time.</button>
+
+    <p id="demo"></p>
+
+    <input type="button" value="Click me to display Date and Time." 
+    onclick="location.href = '/bluegreenapi'" />
+
+    <p>Click the button to test x times per second in total 10 minutes</p>
+    <button onclick="testApiApplication()">The time is?</button>
+    
+    <div id= "clear">
+        <form>
+            <label>Enter first number</label><br>
+            <input type = "number" placeholder = "Enter number"
+                    name = "input1" min = "0"/>
+              
+            <br><br>
+              
+            <label>Enter Second number</label><br>
+            <input type = "number" placeholder = "Enter number" 
+                    name = "input2" min = "0"/>
+              
+            <br><br>
+              
+            <label>
+                Click on button to find sum of prime numbers
+            </label><br>
+            <button value = "find sum" type = "submit" 
+                    onclick = "clearcontent('clear')">
+                find sum
+            </button><br>
+        </form>
+    </div>
+
+    <div id = 'target'>
+
+    </div>
+    <script>
+        function testApiApplication() {
+            try {
+                
+                var target = document.getElementById("target");
+                document.getElementById("target").innerHTML = "";
+                for (let i = 0; i < 5; i++) {
+                    
+                    displayDate(target);
+                }
+                
+            } catch (error) {
+                console.error(error);
+            }
+        }   
+         async function displayDate(target) {
+            try {
+                const response = await fetch('/bluegreenapi');
+                const data = await response.json();
+                console.log(JSON.stringify(data));
+                // document.getElementById("xTimes").innerHTML = JSON.stringify(data);
+
+                var p = document.createElement("p");
+                var textNode = document.createTextNode(JSON.stringify(data));
+                p.appendChild(textNode);
+                target.appendChild(p);
+            } catch (error) {
+                console.error(error);
+            }
+        }      
+    </script>
+
+    <p id="xTimes"></p>
+</body>
+</html>
