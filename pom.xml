@@ -12,7 +12,7 @@
 	<artifactId>bluegreendemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bluegreendemo</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Demo project for Blizzard Blue Green Deplpoyments</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -68,6 +68,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>blizzardbluegreendemo</finalName>
 	</build>
 
 </project>
