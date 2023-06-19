@@ -7,3 +7,9 @@ Technical sets:
 2. Javascript
 3. AWS (ECS, ALB)
 4. Docker
+
+
+
+# Docker Command Line
+1. docker pull zhangzhixinluke/blizzardbluegreendemo:latest
+
