@@ -1,14 +1,10 @@
 {
-	"serviceName": "ECS-Prod-Cluster-Blizzard-Service",
-	"cluster": "ECS-Prod-Cluster-Blizzard",
-	"taskDefinition": "blizzard-docker-task-definition-code-deploy:1",
-	"loadBalancers": [{
-			"targetGroupArn": "arn:aws:elasticloadbalancing:us-west-2:234049477522:targetgroup/tgr-ecs-blizzard-bluegreen1/901bdea5583a23d1",
-			"containerName": "blizzard-image",
-			"containerPort": 80
-		},
+	"serviceName": "ECS-Cluster-Blizzard-Service",
+	"cluster": "ECS-Cluster-Blizzard-Bluegreen",
+	"taskDefinition": "blizzard-docker-task-definition:4",
+	"loadBalancers": [
 		{
-			"targetGroupArn": "arn:aws:elasticloadbalancing:us-west-2:234049477522:targetgroup/tgr-ecs-blizzard-bluegreen2/c40b05b483ffe69a",
+			"targetGroupArn": "arn:aws:elasticloadbalancing:us-west-2:234049477522:targetgroup/tgr-ecs-blizzard-bluegreen1/aadd904d618b6c2f",
 			"containerName": "blizzard-image",
 			"containerPort": 8080
 		}
@@ -22,8 +18,6 @@
 	"networkConfiguration": {
 		"awsvpcConfiguration": {
 			"subnets": [
-				"subnet-084585d4611093531",
-				"subnet-0d94a212496c2506a",
 				"subnet-0e5d836bf5c055935",
 				"subnet-049a9b5264ef1351b"
 			],

@@ -3,4 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: arn
+        TaskDefinition: arn:aws:ecs:us-west-2:234049477522:task-definition/blizzard-docker-task-definition:4
+        LoadBalancerInfo:
+          ContainerName: "blizzard-image"
+          ContainerPort: 8080
