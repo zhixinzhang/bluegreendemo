@@ -9,10 +9,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class MultipleAPICall {
+public class BlueGreenTest {
     private static final String localURL = "http://localhost:8080/bluegreenapi";
-    private static final String awsCloudURL = "http://localhost:8080/bluegreenapi";
+    private static final String awsALBURL = "http://alb-blizzard-2061234537.us-west-2.elb.amazonaws.com:8080/bluegreenapi";
 
+    private static int count = 0;
     public static void main(String[] args) throws IOException, InterruptedException {
         poolTask();
     }
@@ -39,6 +40,7 @@ public class MultipleAPICall {
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
 
-        System.out.println(response.body());
+        System.out.println("test count : " + count +  " status code : " + response.statusCode() + " " + response.body());
+        count ++;
     }
 }

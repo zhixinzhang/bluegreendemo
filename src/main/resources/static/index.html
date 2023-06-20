@@ -6,56 +6,32 @@
 </head>
 <body>
     <img src="https://images6.alphacoders.com/113/1131919.jpg" style="width:480px;height:270px;">
-    <h2>Let's start the Blizzard new Blue and Green Deployment Demo </h2>
-    <h1>Currently we are running on Blue Environment (Prod) </h1>
+    <h1>Let's start the Blizzard new Blue and Green Deployment Demo </h1>
+    <h2>Currently we are running on Blue Environment (Prod) </h2>
     
     <button type="button"
-        onclick="document.getElementById('demo').innerHTML = Date()">
+        onclick="document.getElementById('demoCurrentTime').innerHTML = Date()">
         Click me to display Date and Time.</button>
 
-    <p id="demo"></p>
+    <p id="demoCurrentTime"></p>
 
-    <input type="button" value="check current date/time" 
-    onclick="location.href = '/bluegreenapi'" />
+    <input type="button" value="check current date/time" onclick="location.href = '/bluegreenapi'" />
 
-    <p>Click the button to test x times per second in total 10 minutes</p>
+    <p>Click the button to test 2 times per second in total 30 seconds</p>
+    <p><a href="https://github.com/zhixinzhang/bluegreendemo/blob/main/src/test/java/com/blizzard/bluegreendemo/MultipleAPICall.java">
+        More powerful appliction test see  BlueGreenTest</a></p>
     <button onclick="testApiApplication()">The time is?</button>
-    
-    <!-- <div id= "clear">
-        <form>
-            <label>Enter first number</label><br>
-            <input type = "number" placeholder = "Enter number"
-                    name = "input1" min = "0"/>
-              
-            <br><br>
-              
-            <label>Enter Second number</label><br>
-            <input type = "number" placeholder = "Enter number" 
-                    name = "input2" min = "0"/>
-              
-            <br><br>
-              
-            <label>
-                Click on button to find sum of prime numbers
-            </label><br>
-            <button value = "find sum" type = "submit" 
-                    onclick = "clearcontent('clear')">
-                find sum
-            </button><br>
-        </form>
-    </div> -->
 
     <div id = 'target'>
-
     </div>
     <script>
-        function testApiApplication() {
+        async function testApiApplication() {
             try {
                 
                 var target = document.getElementById("target");
                 document.getElementById("target").innerHTML = "";
-                for (let i = 0; i < 5; i++) {
-                    
+                for (let i = 0; i < 30; i++) {
+                    await new Promise(resolve => setTimeout(resolve, 500));
                     displayDate(target);
                 }
                 

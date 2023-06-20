@@ -21,7 +21,12 @@ public class BlueGreenController {
         System.out.println(formatter.format(date));  
         
         String requestTime = formatter.format(date);
+        long returnTime = System.currentTimeMillis();
+
         curTime.put("Current time", requestTime);
+        curTime.put("Enviroment", "Blue (Prod)");
+        curTime.put("TTLB", String.valueOf(returnTime));
+        // curTime.put("Enviroment", "Green (Test)");
         return new ResponseEntity<>(curTime, HttpStatus.OK);
     }
 
