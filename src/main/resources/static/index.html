@@ -6,21 +6,21 @@
 </head>
 <body>
     <img src="https://images6.alphacoders.com/113/1131919.jpg" style="width:480px;height:270px;">
-    <h1>Let's start the Blizzard new Blue and Green Deployment Demo </h1>
-    <h2>Currently we are running on newGreen Environment (Test) </h2>
+    <h1>Let's start the Blizzard Blue and Green Deployment Demo </h1>
+    <h2>Currently we are running on Blue Environment (Prod) </h2>
     
     <button type="button"
         onclick="document.getElementById('demoCurrentTime').innerHTML = Date()">
-        Click me to display Date and Time.</button>
+        Click me to display Date and Time. (not api call)</button>
 
     <p id="demoCurrentTime"></p>
 
-    <input type="button" value="check current date/time" onclick="location.href = '/bluegreenapi'" />
+    <input type="button" value="check current date/time backend API Call" onclick="location.href = '/bluegreenapi'" />
 
-    <p>Click the button to test 2 times per second in total 30 seconds</p>
+    <p>Click the button to call api 2 times per second in total 30 seconds</p>
     <p><a href="https://github.com/zhixinzhang/bluegreendemo/blob/main/src/test/java/com/blizzard/bluegreendemo/MultipleAPICall.java">
         More powerful appliction test see  BlueGreenTest</a></p>
-    <button onclick="testApiApplication()">The time is?</button>
+    <button onclick="testApiApplication()">List time spots</button>
 
     <div id = 'target'>
     </div>
@@ -44,8 +44,6 @@
                 const response = await fetch('/bluegreenapi');
                 const data = await response.json();
                 console.log(JSON.stringify(data));
-                // document.getElementById("xTimes").innerHTML = JSON.stringify(data);
-
                 var p = document.createElement("p");
                 var textNode = document.createTextNode(JSON.stringify(data));
                 p.appendChild(textNode);
