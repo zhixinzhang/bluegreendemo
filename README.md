@@ -3,12 +3,12 @@
 
 # This is Blizzard home workd demo. 
 Technical sets:
-1. Java (Spring boot framework)
+1. Java (Spring boot framework, JDK 17 +)
 2. Javascript
-3. AWS (ECS, ALB)
+3. HTML
+3. AWS (ECS, EC2, ALB, CodeDeploy)
 4. Docker
-
-
+5. Docker Hub
 
 # Docker Command Line
 1. docker pull zhangzhixinluke/blizzardbluegreendemo:latest
