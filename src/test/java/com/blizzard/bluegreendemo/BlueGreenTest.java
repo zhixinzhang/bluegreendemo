@@ -34,7 +34,7 @@ public class BlueGreenTest {
     private static void callXTimesPerSecond () throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(localURL))
+                .uri(URI.create(awsALBURL))
                 .build();
 
         HttpResponse<String> response = client.send(request,
