@@ -9,39 +9,59 @@
     <h1>Let's start the Blizzard Blue and Green Deployment Demo </h1>
     <h2>Currently we are running on new Blue Environment (Prod) </h2>
     
+    <p>Click the below button to call <b>bluegreenapi/tz?</b> api to get your local time.</p>
+    <input type="button" value="Check current date/time backend API Call" onclick="testSingleCall()" />
+
+    <p>Below button is Javascript fucntion to get your current local time. Not api call</p>
     <button type="button"
         onclick="document.getElementById('demoCurrentTime').innerHTML = Date()">
-        Click me to display Date and Time. (not api call)</button>
-
+        Click me to display Date and Time.
+    </button>
     <p id="demoCurrentTime"></p>
-
-    <input type="button" value="check current date/time backend API Call" onclick="location.href = '/bluegreenapi'" />
-
-    <p>Click the button to call api 2 times per second in total 30 seconds</p>
+    <p>Click the button to call backend api 2 times per second in total 30 seconds</p>
     <p><a href="https://github.com/zhixinzhang/bluegreendemo/blob/main/src/test/java/com/blizzard/bluegreendemo/BlueGreenTest.java">
         More powerful appliction test see BlueGreenTest</a></p>
-    <button onclick="testApiApplication()">List time spots</button>
+    <button onclick="testMultipleCall()">List time spots</button>
+
 
     <div id = 'target'>
-    </div>
+    </div>   
     <script>
-        async function testApiApplication() {
+        async function testSingleCall() {
             try {
+                var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                console.log(timezone); // e.g Asia/Karachi
+                const targetURL = '/bluegreenapi/tz?timeZone=' + timezone
+                console.log(targetURL);
+
+                window.open(targetURL, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=800,width=1400,height=400");
                 
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        async function testMultipleCall() {
+            try {
+                var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                console.log(timezone);
+                const targetURL = '/bluegreenapi/tz?timeZone=' + timezone
+                console.log(targetURL);
+
                 var target = document.getElementById("target");
                 document.getElementById("target").innerHTML = "";
                 for (let i = 0; i < 30; i++) {
                     await new Promise(resolve => setTimeout(resolve, 500));
-                    displayDate(target);
+                    displayDate(target, targetURL);
                 }
                 
             } catch (error) {
                 console.error(error);
             }
         }   
-         async function displayDate(target) {
+        
+         async function displayDate(target, targetURL) {
             try {
-                const response = await fetch('/bluegreenapi');
+                const response = await fetch(targetURL);
                 const data = await response.json();
                 console.log(JSON.stringify(data));
                 var p = document.createElement("p");

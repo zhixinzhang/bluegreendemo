@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 public class APITest {
-    private final String demoURL = "http://localhost:8080/bluegreenapi";
+    private final String demoURL = "http://localhost:8080/bluegreenapi/tz?timeZone=America/Los_Angeles";
 
     @Test
     public void TTLDC_OneSuccess() throws ClientProtocolException, IOException {

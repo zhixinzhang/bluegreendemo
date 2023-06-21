@@ -10,8 +10,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class BlueGreenTest {
-    private static final String localURL = "http://localhost:8080/bluegreenapi";
-    private static final String awsALBURL = "http://alb-blizzard-2061234537.us-west-2.elb.amazonaws.com:8080/bluegreenapi";
+    private static final String awsALBURL = "http://localhost:8080/bluegreenapi/tz?timeZone=America/Los_Angeles";
+    // private static final String awsALBURL = "http://alb-blizzard-2061234537.us-west-2.elb.amazonaws.com:8080/bluegreenapi/tz?timeZone=America/Los_Angeles";
 
     private static int count = 0;
     public static void main(String[] args) throws IOException, InterruptedException {
